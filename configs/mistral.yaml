@@ -1,0 +1,23 @@
+# Model Architecture
+model_name: "mistralai/Mistral-7B-v0.1"  # HuggingFace model ID
+max_length: 2048                          # Context window size
+
+# LoRA (Low-Rank Adaptation) Settings - for efficient fine-tuning
+lora:
+  enabled: true                           # Use LoRA? (Saves 80% GPU memory)
+  r: 8                                    # Rank (lower = less GPU usage)
+  target_modules: ["q_proj", "v_proj"]    # Layers to adapt
+  alpha: 32                               # Scaling factor
+  dropout: 0.05                           # Prevents overfitting
+
+# Training Hyperparameters
+training:
+  learning_rate: 2e-5                     # Smaller for fine-tuning
+  batch_size: 4                           # Depends on GPU memory
+  num_epochs: 3                           # Number of full data passes
+  gradient_accumulation_steps: 2          # Simulates larger batch size
+
+# Quantization (QLoRA) - Optional for 4-bit training
+quantization:
+  enabled: false                          # Requires bitsandbytes
+  bits: 4                                 # 4-bit precision
