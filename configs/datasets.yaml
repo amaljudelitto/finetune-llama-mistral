@@ -1,0 +1,6 @@
+# Popular open datasets for fine-tuning:
+dataset_name: "timdettmers/openassistant-guanaco"  # Chat dataset
+# Alternatives:
+# - "wikitext" (general text)
+# - "pubmed_qa" (medical)
+# - "pile-of-law/legal_pile" (legal)
